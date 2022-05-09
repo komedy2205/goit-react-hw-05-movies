@@ -1,25 +1,30 @@
-import logo from './logo.svg';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import AppBar from './AppBar/AppBar';
+import HomePage from './Views/HomePage';
+// import MoviesPage from './Views/MoviesPage';
+import MovieDetailsPage from './Views/MovieDetailsPage';
+// import Cast from './Views/Cast';
+// import Reviews from './Views/Reviews';
+import NotFound from './Views/NotFound';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+export default function App() {
+  return(
+    <>
+      <BrowserRouter>
+      <AppBar/>
+      <Routes>
+        <Route path="/" element={<HomePage />}/>
+        {/* <Route path="movies" element={<MoviesPage />}/> */}
+          <Route path=":movieId" element={<MovieDetailsPage />}/>
+            {/* <Route path="cast" element={<Cast />}/> */}
+            {/* <Route path="reviews" element={<Reviews/>}/> */}
+        <Route path="*" element={<NotFound />} />
+        </Routes>
+      </BrowserRouter>
+    </>
   );
-}
+  
+};
 
-export default App;
+// https://api.themoviedb.org/3/movie/76341?api_key=61c9e18fb4466748bc8d7dbd239ed6c5
