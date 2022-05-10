@@ -3,8 +3,8 @@ import AppBar from './AppBar/AppBar';
 import HomePage from './Views/HomePage';
 // import MoviesPage from './Views/MoviesPage';
 import MovieDetailsPage from './Views/MovieDetailsPage';
-// import Cast from './Views/Cast';
-// import Reviews from './Views/Reviews';
+import Cast from './Views/Cast';
+import Reviews from './Views/Reviews';
 import NotFound from './Views/NotFound';
 import './App.css';
 
@@ -16,10 +16,10 @@ export default function App() {
       <Routes>
         <Route path="/" element={<HomePage />}/>
         {/* <Route path="movies" element={<MoviesPage />}/> */}
-          <Route path=":movieId" element={<MovieDetailsPage />}/>
-            {/* <Route path="cast" element={<Cast />}/> */}
-            {/* <Route path="reviews" element={<Reviews/>}/> */}
-        <Route path="*" element={<NotFound />} />
+          <Route path=":movieId/*" element={<MovieDetailsPage />} />
+            <Route path="cast" element={<Cast />}/>
+            <Route path="reviews" element={<Reviews />}/>
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     </>

@@ -1,8 +1,11 @@
-import { Outlet, useParams } from "react-router-dom";
+import Cast from './Cast';
+import Reviews from './Reviews';
+import { Outlet, useParams, NavLink } from "react-router-dom";
 import { useState, useEffect } from 'react';
 
 export default function MovieDetailsPage() {
     const { movieId } = useParams();
+            // console.log('movieId: ', movieId);
     
     const [movie, setMovie] = useState(null);
     // console.log('movie: ', movie);
@@ -32,17 +35,23 @@ export default function MovieDetailsPage() {
     }, [movieId]);
 
     return (
-        <ul>
-            {movie &&
-                movie.map(movie => (
-                    <li key={movie.id}>
-                        <img src={movie.poster_path} alt={movie.original_title} />
-                        <p>{movie.original_title}</p>
-                        <p>{movie.vote_average}</p>
-                        <p>{movie.overview}</p>
+        <>
+            {movie && (
+                <ul>
+                    {movie.map(({ id, poster_path, original_title, vote_average, overview }) => (
+                    <li key={id}>
+                        <img src={poster_path} alt={original_title} />
+                        <p>{original_title}</p>
+                        <p>{vote_average}</p>
+                        <p>{overview}</p>
                     </li>
                 ))}
-            <Outlet/>
-        </ul>
+                </ul>
+            )}
+            <hr/>
+            <Outlet />
+            <NavLink to="cast" element={<Cast />}><Cast/></NavLink>
+            <NavLink to="reviews" element={<Reviews />}><Reviews/></NavLink>
+        </>
     )
 }
