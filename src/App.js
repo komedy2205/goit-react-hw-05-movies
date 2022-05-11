@@ -15,10 +15,10 @@ export default function App() {
       <AppBar/>
       <Routes>
         <Route path="/" element={<HomePage />}/>
-        {/* <Route path="movies" element={<MoviesPage />}/> */}
-          <Route path=":movieId/*" element={<MovieDetailsPage />} />
+          <Route path=":movieId" element={<MovieDetailsPage />} />
             <Route path="cast" element={<Cast />}/>
             <Route path="reviews" element={<Reviews />}/>
+      {/* <Route path="movies" element={<MoviesPage />}/> */}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
@@ -26,5 +26,13 @@ export default function App() {
   );
   
 };
+
+// function Cast() {
+//     let { movieId } = useParams();
+//     return <h3>Cast {movieId}</h3>;
+// };
+
+
+
 
 // https://api.themoviedb.org/3/movie/76341?api_key=61c9e18fb4466748bc8d7dbd239ed6c5

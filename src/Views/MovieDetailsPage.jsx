@@ -1,6 +1,4 @@
-import Cast from './Cast';
-import Reviews from './Reviews';
-import { Outlet, useParams, NavLink } from "react-router-dom";
+import { Outlet, useParams } from "react-router-dom";
 import { useState, useEffect } from 'react';
 
 export default function MovieDetailsPage() {
@@ -50,8 +48,9 @@ export default function MovieDetailsPage() {
             )}
             <hr/>
             <Outlet />
-            <NavLink to="cast" element={<Cast />}><Cast/></NavLink>
-            <NavLink to="reviews" element={<Reviews />}><Reviews/></NavLink>
         </>
     )
-}
+};
+
+
+
