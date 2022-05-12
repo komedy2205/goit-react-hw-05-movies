@@ -11,7 +11,7 @@ export default function HomePage() {
     useEffect(() => {
         const getMovies = () => {
             return fetch(
-                'https://api.themoviedb.org/3/trending/all/week?api_key=61c9e18fb4466748bc8d7dbd239ed6c5')
+                'https://api.themoviedb.org/3/trending/all/day?api_key=61c9e18fb4466748bc8d7dbd239ed6c5')
                 .then(res => {
                     if (!res.ok) {
                         throw Error(res.statusText);
@@ -22,7 +22,7 @@ export default function HomePage() {
 
         getMovies()
             .then(movie => {
-                setMovies(movie);
+                setMovies(movie.results);
                 // console.log(movie)
             })
             .catch(showError);
@@ -32,7 +32,7 @@ export default function HomePage() {
         <>
             {movies && (
                 <ul>
-                    {movies.results.map(movie => (
+                    {movies.map(movie => (
                         <li key={movie.id}>
                             <Link to={`${movie.id}`}>{movie.original_title}</Link>
                         </li>

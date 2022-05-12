@@ -7,7 +7,7 @@ export default function Navigation() {
             <NavLink
                 to="/"
                 className={styles.link}
-                // activeClassName={styles.activeLink}
+                // activeClassName={styles.link.active}
             >
                 Home
             </NavLink>
