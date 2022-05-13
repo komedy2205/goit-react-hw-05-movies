@@ -13,7 +13,7 @@ export const MovieDetailsPage = () => {
     };
 
     useEffect(() => {
-        const getMovie = () => {
+        const getMovie = movieId => {
             return fetch(
                 `https://api.themoviedb.org/3/movie/${movieId}?api_key=61c9e18fb4466748bc8d7dbd239ed6c5&append_to_response=videos,images`)
                 .then(res => {
@@ -24,7 +24,7 @@ export const MovieDetailsPage = () => {
                 });
         }
 
-        getMovie()
+        getMovie(movieId)
             .then(movie => {
                 setMovie([movie]);
                 // console.log(movie)

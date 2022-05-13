@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 
 export default function HomePage() {
     const [movies, setMovies] = useState(null);
+        // console.log(movies)
+
 
     const showError = () => {
         alert('Oooops, something went wrong!')
@@ -11,7 +13,7 @@ export default function HomePage() {
     useEffect(() => {
         const getMovies = () => {
             return fetch(
-                'https://api.themoviedb.org/3/trending/all/day?api_key=61c9e18fb4466748bc8d7dbd239ed6c5')
+                'https://api.themoviedb.org/3/trending/all/week?api_key=61c9e18fb4466748bc8d7dbd239ed6c5')
                 .then(res => {
                     if (!res.ok) {
                         throw Error(res.statusText);
